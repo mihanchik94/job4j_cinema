@@ -1,4 +1,4 @@
-package model;
+package ru.job4j.cinema.model;
 
 public class Hall {
     private int id;

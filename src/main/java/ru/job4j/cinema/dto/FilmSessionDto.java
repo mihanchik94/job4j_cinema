@@ -1,4 +1,4 @@
-package dto;
+package ru.job4j.cinema.dto;
 
 import com.jayway.jsonpath.internal.path.PredicateContextImpl;
 

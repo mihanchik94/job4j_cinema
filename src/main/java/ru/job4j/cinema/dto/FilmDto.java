@@ -1,4 +1,4 @@
-package dto;
+package ru.job4j.cinema.dto;
 
 public class FilmDto {
     private String name;
