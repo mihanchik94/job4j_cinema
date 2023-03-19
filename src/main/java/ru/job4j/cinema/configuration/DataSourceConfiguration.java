@@ -31,7 +31,7 @@ public class DataSourceConfiguration {
 
     @Bean
     public Sql2o dataBaseClient(DataSource dataSource) {
-        return new Sql2o(dataSource);
+        return new Sql2o(dataSource, createConvertors());
     }
 
     private Quirks createConvertors() {

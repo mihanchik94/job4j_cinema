@@ -1,7 +1,5 @@
 package ru.job4j.cinema.dto;
 
-import com.jayway.jsonpath.internal.path.PredicateContextImpl;
-
 import java.time.LocalDateTime;
 
 public class FilmSessionDto {

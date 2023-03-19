@@ -33,8 +33,8 @@ insert into film_sessions (film_id, halls_id, start_time, end_time, price) value
 insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (17, 5, '2022-08-30 08:00', '2022-08-30 10:10', 200);
 insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (17, 5, '2022-08-30 10:40', '2022-08-30 12:50', 350);
 insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (18, 5, '2022-08-30 13:20', '2022-08-30 15:00', 400);
-insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (18, 5, '2022-08-30 15:20', '2022-08-30 16:00', 400);
-insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (19, 5, '2022-08-30 15:20', '2022-08-30 18:10', 400);
-insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (20, 5, '2022-08-30 18:30', '2022-08-30 20:40', 400);
-insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (21, 5, '2022-08-30 21:00', '2022-08-30 22:40', 400);
-insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (21, 5, '2022-08-30 23:10', '2022-08-31 00:50', 400);
+insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (18, 5, '2022-08-30 15:20', '2022-08-30 17:00', 400);
+insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (19, 5, '2022-08-30 17:20', '2022-08-30 20:10', 400);
+insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (20, 5, '2022-08-30 20:30', '2022-08-30 22:40', 400);
+insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (21, 5, '2022-08-30 23:00', '2022-08-31 00:40', 400);
+insert into film_sessions (film_id, halls_id, start_time, end_time, price) values (21, 5, '2022-08-31 1:10', '2022-08-31 02:50', 400);
