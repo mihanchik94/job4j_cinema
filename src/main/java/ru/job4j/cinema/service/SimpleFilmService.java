@@ -33,7 +33,7 @@ public class SimpleFilmService implements FilmService {
         if (optionalGenre.isEmpty()) {
             return Optional.empty();
         }
-        return Optional.of(new FilmDto(optionalFilm.get().getName(), optionalFilm.get().getDescription(),
+        return Optional.of(new FilmDto(optionalFilm.get().getId(), optionalFilm.get().getName(), optionalFilm.get().getDescription(),
                 optionalFilm.get().getYear(), optionalFilm.get().getMinimalAge(),
                 optionalFilm.get().getDurationInMinutes(), optionalGenre.get().getName()));
     }
@@ -44,7 +44,7 @@ public class SimpleFilmService implements FilmService {
         Collection<Film> films = filmRepository.findAll();
         for (Film film : films) {
             Optional<Genre> optionalGenre = genreRepository.findById(film.getGenreId());
-            result.add(new FilmDto(film.getName(), film.getDescription(), film.getYear(), film.getMinimalAge(),
+            result.add(new FilmDto(film.getId(), film.getName(), film.getDescription(), film.getYear(), film.getMinimalAge(),
                     film.getDurationInMinutes(), optionalGenre.get().getName()));
         }
         return result;
