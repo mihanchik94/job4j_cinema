@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
-    <title>Job4j Cinema - Расписание</title>
+    <title>Job4j Cinema - Ошибка</title>
 </head>
 <body>
 <div class="container-fluid p-0">
@@ -18,43 +18,23 @@
             <div class="collapse navbar-collapse">
                 <div class="navbar-nav me-auto">
                     <a class="nav-item nav-link" href="/">Главная</a>
-                    <a class="nav-item nav-link active" th:href="@{/sessions}">Расписание</a>
+                    <a class="nav-item nav-link" th:href="@{/sessions}">Расписание</a>
                     <a class="nav-item nav-link" th:href="@{/films}">Кинотека</a>
                 </div>
                 <div class="d-flex" th:if="${user.fullName == 'Гость'}">
-                    <a class="nav-link text-secondary me-3" th:href="@{/users/register}">Регистрация</a>
-                    <a class="nav-link text-secondary" th:href="@{/users/login}">Войти</a>
+                    <a class="nav-link text-secondary me-3" th:href="@{/user/register}">Регистрация</a>
+                    <a class="nav-link text-secondary" th:href="@{/user/login}">Войти</a>
                 </div>
-                <div class="d-flex" th:if="${user.fullName} != 'Гость'">
+                <div class="d-flex" th:if="${user.fullName != 'Гость'}">
                     <a class="nav-link text-secondary me-3" href="#" th:text="${user.fullName}"></a>
-                    <a class="nav-link text-secondary" th:href="@{/users/logout}">Выйти</a>
+                    <a class="nav-link text-secondary" th:href="@{/user/logout}">Выйти</a>
                 </div>
             </div>
         </div>
     </nav>
     <div class="container">
-        <div class="row">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="row">Название фильма</th>
-                    <th scope="row">Номер зала</th>
-                    <th scope="row">Начало сеанса</th>
-                    <th scope="row">Конец сеанса</th>
-                    <th scope="row">Стоимость билета</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="filmSession : ${filmSessions}">
-                    <td th:text="${filmSession.filmName}"></td>
-                    <td th:text="${filmSession.hallName}"></td>
-                    <td th:text="${filmSession.startTime}"></td>
-                    <td th:text="${filmSession.endTime}"></td>
-                    <td th:text="${filmSession.price}"></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <h3 class="mt3">Произошла ошибка</h3>
+        <p class="text-danger" th:text="${error}"></p>
     </div>
 </div>
 </body>

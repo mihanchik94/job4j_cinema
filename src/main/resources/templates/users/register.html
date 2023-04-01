@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
-    <title>Job4j Cinema - Главная</title>
+    <title>Job4j Cinema - Регистрация</title>
 </head>
 <body>
 <div class="container-fluid p-0">
@@ -17,27 +17,38 @@
             <a class="navbar-brand" href="/">Job4j Cinema</a>
             <div class="collapse navbar-collapse">
                 <div class="navbar-nav me-auto">
-                    <a class="nav-item nav-link active" href="/">Главная</a>
+                    <a class="nav-item nav-link" href="/">Главная</a>
                     <a class="nav-item nav-link" th:href="@{/sessions}">Расписание</a>
                     <a class="nav-item nav-link" th:href="@{/films}">Кинотека</a>
                 </div>
-                <div class="d-flex" th:if="${user.fullName == 'Гость'}">
-                    <a class="nav-link text-secondary me-3" th:href="@{/users/register}">Регистрация</a>
+                <div class="d-flex">
+                    <a class="nav-link text-light me-3" th:href="@{/users/register}">Регистрация</a>
                     <a class="nav-link text-secondary" th:href="@{/users/login}">Войти</a>
-                </div>
-                <div class="d-flex" th:if="${user.fullName} != 'Гость'">
-                    <a class="nav-link text-secondary me-3" href="#" th:text="${user.fullName}"></a>
-                    <a class="nav-link text-secondary" th:href="@{/users/logout}">Выйти</a>
                 </div>
             </div>
         </div>
     </nav>
-    <div class="container mt-2">
-        <h4>Проект Job4j Cinema</h4>
-        <ul>
-            <li><a th:href="@{/sessions}">Расписание</a></li>
-            <li><a th:href="@{/films}">Кинотека</a></li>
-        </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+            <form class="mt-3" th:action="@{/users/register}" method="post">
+                <div class="mb-3">
+                    <label for="fullName" class="form-label"><b>Имя</b></label>
+                    <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Петров Иван" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label"><b>Почта</b></label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="ivan@mail.ru" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label"><b>Пароль</b></label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button class="btn btn-primary" type="submit">Сохранить</button>
+            </form>
+            </div>
+        </div>
     </div>
 </div>
 </body>
