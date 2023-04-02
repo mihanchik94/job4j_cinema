@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface TicketRepository {
-    Ticket save(Ticket ticket);
+    Optional<Ticket> save(Ticket ticket);
     Optional<Ticket> findById(int id);
     Collection<Ticket> findAll();
     boolean deleteById(int id);

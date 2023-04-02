@@ -48,27 +48,25 @@ class Sql2oTicketRepositoryTest {
 
     @Test
     public void whenSaveTicketThenGetTheSame() {
-        Ticket savedTicket = sql2oTicketRepository.save(new Ticket(1, 1, 1, 1, 1));
+        Ticket savedTicket = sql2oTicketRepository.save(new Ticket(1, 1, 1, 1, 1)).get();
         Ticket actualTicket = sql2oTicketRepository.findById(savedTicket.getId()).get();
         assertThat(actualTicket).isEqualTo(savedTicket);
     }
 
     @Test
     public void whenSaveSeveralThenGetAll() {
-        Ticket savedTicket1 = sql2oTicketRepository.save(new Ticket(1, 1, 1, 1, 1));
-        Ticket savedTicket2 = sql2oTicketRepository.save(new Ticket(2, 2, 2, 2, 2));
-        Ticket savedTicket3 = sql2oTicketRepository.save(new Ticket(3, 3, 3, 3, 3));
+        Ticket savedTicket1 = sql2oTicketRepository.save(new Ticket(1, 1, 1, 1, 1)).get();
+        Ticket savedTicket2 = sql2oTicketRepository.save(new Ticket(2, 2, 2, 2, 2)).get();
+        Ticket savedTicket3 = sql2oTicketRepository.save(new Ticket(3, 3, 3, 3, 3)).get();
         Collection<Ticket> tickets = sql2oTicketRepository.findAll();
         assertThat(tickets).isEqualTo(List.of(savedTicket1, savedTicket2, savedTicket3));
     }
 
     @Test
-    public void whenSaveTicketsWithTheSameSessionsAndRowsThenException() {
+    public void whenSaveTicketsWithTheSameSessionsAndRowsThenEmptyOptional() {
         Ticket ticket = new Ticket(1, 1, 1, 1, 1);
         sql2oTicketRepository.save(ticket);
-        assertThatThrownBy(() -> sql2oTicketRepository.save(
-                new Ticket(2, 1, 1, 1, 1)
-        )).isInstanceOf(RuntimeException.class);
+        assertThat(sql2oTicketRepository.save(new Ticket(2, 1, 1, 1, 1))).isEqualTo(Optional.empty());
     }
 
     @Test
@@ -80,7 +78,7 @@ class Sql2oTicketRepositoryTest {
 
     @Test
     public void whenDeleteThenGetEmptyOptional() {
-        Ticket savedTicket = sql2oTicketRepository.save(new Ticket(1, 1, 1, 1, 1));
+        Ticket savedTicket = sql2oTicketRepository.save(new Ticket(1, 1, 1, 1, 1)).get();
         boolean isDeleted = sql2oTicketRepository.deleteById(savedTicket.getId());
         assertThat(isDeleted).isTrue();
         assertThat(sql2oTicketRepository.findById(savedTicket.getId())).isEqualTo(Optional.empty());

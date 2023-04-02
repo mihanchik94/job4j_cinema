@@ -20,7 +20,7 @@ public class Sql2oTicketRepository implements TicketRepository {
     }
 
     @Override
-    public Ticket save(Ticket ticket) {
+    public Optional<Ticket> save(Ticket ticket) {
         try (Connection connection = sql2o.open()) {
             String sql = """
                     insert into tickets (session_id, row_number, place_number, user_id)
@@ -33,7 +33,9 @@ public class Sql2oTicketRepository implements TicketRepository {
                     .addParameter("userId", ticket.getUserId());
             int generatedId = query.executeUpdate().getKey(Integer.class);
             ticket.setId(generatedId);
-            return ticket;
+            return Optional.ofNullable(ticket);
+        } catch (Exception e) {
+            return Optional.empty();
         }
     }
 
