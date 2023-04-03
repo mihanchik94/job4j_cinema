@@ -39,8 +39,9 @@ public class SimpleFilmSessionService implements FilmSessionService {
         if (optionalFilm.isEmpty() || optionalHall.isEmpty()) {
             return Optional.empty();
         }
-        return Optional.of(new FilmSessionDto(optionalFilm.get().getName(), optionalHall.get().getName(),
-                optionalFilmSession.get().getStartTime(), optionalFilmSession.get().getEndTime(), optionalFilmSession.get().getPrice()));
+        return Optional.of(new FilmSessionDto(optionalFilmSession.get().getId(), optionalFilm.get().getName(), optionalFilmSession.get().getHallId(),
+                optionalHall.get().getName(), optionalFilmSession.get().getStartTime(), optionalFilmSession.get().getEndTime(),
+                optionalFilmSession.get().getPrice()));
     }
 
     @Override
@@ -50,7 +51,7 @@ public class SimpleFilmSessionService implements FilmSessionService {
         for (FilmSession filmSession : filmSessions) {
             Optional<Film> optionalFilm = filmRepository.findById(filmSession.getFilmId());
             Optional<Hall> optionalHall = hallRepository.findById(filmSession.getHallId());
-            result.add(new FilmSessionDto(optionalFilm.get().getName(), optionalHall.get().getName(),
+            result.add(new FilmSessionDto(filmSession.getId(), optionalFilm.get().getName(), filmSession.getHallId(), optionalHall.get().getName(),
                     filmSession.getStartTime(), filmSession.getEndTime(), filmSession.getPrice()));
         }
         return result;

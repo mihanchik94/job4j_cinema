@@ -3,7 +3,9 @@ package ru.job4j.cinema.dto;
 import java.time.LocalDateTime;
 
 public class FilmSessionDto {
+    private int id;
     private String filmName;
+    private int hallId;
     private String hallName;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -12,12 +14,22 @@ public class FilmSessionDto {
     public FilmSessionDto() {
     }
 
-    public FilmSessionDto(String filmName, String hallName, LocalDateTime startTime, LocalDateTime endTime, int price) {
+    public FilmSessionDto(int id, String filmName, int hallId, String hallName, LocalDateTime startTime, LocalDateTime endTime, int price) {
+        this.id = id;
         this.filmName = filmName;
+        this.hallId = hallId;
         this.hallName = hallName;
         this.startTime = startTime;
         this.endTime = endTime;
         this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFilmName() {
@@ -26,6 +38,14 @@ public class FilmSessionDto {
 
     public void setFilmName(String filmName) {
         this.filmName = filmName;
+    }
+
+    public int getHallId() {
+        return hallId;
+    }
+
+    public void setHallId(int hallId) {
+        this.hallId = hallId;
     }
 
     public String getHallName() {

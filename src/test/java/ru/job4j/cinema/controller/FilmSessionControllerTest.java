@@ -27,8 +27,8 @@ class FilmSessionControllerTest {
 
     @Test
     public void whenRequestFilmSessionsListPageThenGetPageWithFilmSessions() {
-        FilmSessionDto filmSession1 = new FilmSessionDto("name1", "hall1", LocalDateTime.now(), LocalDateTime.now().plusHours(3), 300);
-        FilmSessionDto filmSession2 = new FilmSessionDto("name2", "hall2", LocalDateTime.now(), LocalDateTime.now().plusHours(2), 400);
+        FilmSessionDto filmSession1 = new FilmSessionDto(1, "name1", 1, "hall1", LocalDateTime.now(), LocalDateTime.now().plusHours(3), 300);
+        FilmSessionDto filmSession2 = new FilmSessionDto(2, "name2", 2, "hall2", LocalDateTime.now(), LocalDateTime.now().plusHours(2), 400);
         Collection<FilmSessionDto> expectedSessions = List.of(filmSession1, filmSession2);
         when(filmSessionService.findAll()).thenReturn(expectedSessions);
 
