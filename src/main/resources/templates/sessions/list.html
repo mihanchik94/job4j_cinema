@@ -51,6 +51,9 @@
                     <td th:text="${filmSession.startTime}"></td>
                     <td th:text="${filmSession.endTime}"></td>
                     <td th:text="${filmSession.price}"></td>
+                    <td>
+                        <a class="btn btn-primary w-100" th:href="@{/tickets/buyTicketForm/{filmSessionId}(filmSessionId=${filmSession.id})}">Купить</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
