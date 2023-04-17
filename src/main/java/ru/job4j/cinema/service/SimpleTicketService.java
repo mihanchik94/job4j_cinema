@@ -47,7 +47,7 @@ public class SimpleTicketService implements TicketService {
         if (optionalFilm.isEmpty() || optionalHall.isEmpty()) {
             return Optional.empty();
         }
-        return Optional.of(new TicketDto(ticket.getSessionId(), optionalFilm.get().getName(), optionalHall.get().getName(),
+        return Optional.of(new TicketDto(ticket.getUserId(), ticket.getSessionId(), optionalFilm.get().getName(), optionalHall.get().getName(),
                 ticket.getRowNumber(), ticket.getPlaceNumber(), optionalFilmSession.get().getStartTime(),
                 optionalFilmSession.get().getEndTime()));
     }
@@ -67,8 +67,9 @@ public class SimpleTicketService implements TicketService {
         if (optionalFilm.isEmpty() || optionalHall.isEmpty()) {
             return Optional.empty();
         }
-        return Optional.of(new TicketDto(optionalTicket.get().getSessionId(), optionalFilm.get().getName(), optionalHall.get().getName(),
-                optionalTicket.get().getRowNumber(), optionalTicket.get().getPlaceNumber(), optionalFilmSession.get().getStartTime(),
+        return Optional.of(new TicketDto(optionalTicket.get().getUserId(), optionalTicket.get().getSessionId(),
+                optionalFilm.get().getName(), optionalHall.get().getName(), optionalTicket.get().getRowNumber(),
+                optionalTicket.get().getPlaceNumber(), optionalFilmSession.get().getStartTime(),
                 optionalFilmSession.get().getEndTime()));
     }
 
@@ -80,7 +81,7 @@ public class SimpleTicketService implements TicketService {
             Optional<FilmSession> optionalFilmSession = filmSessionRepository.findById(ticket.getSessionId());
             Optional<Film> optionalFilm = filmRepository.findById(optionalFilmSession.get().getFilmId());
             Optional<Hall> optionalHall = hallRepository.findById(optionalFilmSession.get().getHallId());
-            result.add(new TicketDto(ticket.getSessionId(), optionalFilm.get().getName(), optionalHall.get().getName(),
+            result.add(new TicketDto(ticket.getUserId(), ticket.getSessionId(), optionalFilm.get().getName(), optionalHall.get().getName(),
                     ticket.getRowNumber(), ticket.getPlaceNumber(), optionalFilmSession.get().getStartTime(),
                     optionalFilmSession.get().getEndTime()));
         }

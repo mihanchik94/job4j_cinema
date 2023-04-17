@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class TicketDto {
+    private int userId;
     private int sessionId;
     private String filmName;
     private String hallName;
@@ -15,7 +16,8 @@ public class TicketDto {
     public TicketDto() {
     }
 
-    public TicketDto(int sessionId, String filmName, String hallName, int rowNumber, int placeNumber, LocalDateTime startTime, LocalDateTime endTime) {
+    public TicketDto(int userId, int sessionId, String filmName, String hallName, int rowNumber, int placeNumber, LocalDateTime startTime, LocalDateTime endTime) {
+        this.userId = userId;
         this.sessionId = sessionId;
         this.filmName = filmName;
         this.hallName = hallName;
@@ -23,6 +25,14 @@ public class TicketDto {
         this.placeNumber = placeNumber;
         this.startTime = startTime;
         this.endTime = endTime;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getSessionId() {
