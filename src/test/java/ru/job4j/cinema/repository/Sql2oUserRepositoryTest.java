@@ -66,7 +66,8 @@ class Sql2oUserRepositoryTest {
     public void whenSaveUsersWithTheSameEmailsAndPasswordThenEmptyOptional() {
         User user = new User(1, "name1", "email1", "password1");
         sql2oUserRepository.save(user);
-        assertThat(sql2oUserRepository.save(new User(2, "name1", "email1", "password1"))).isEqualTo(Optional.empty());
+        assertThatThrownBy(() -> sql2oUserRepository.save(new User(2, "name1", "email1", "password1")))
+                .isInstanceOf(RuntimeException.class);
     }
 
     @Test
