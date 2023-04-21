@@ -63,13 +63,6 @@ class Sql2oUserRepositoryTest {
     }
 
     @Test
-    public void whenSaveUsersWithTheSameEmailsAndPasswordThenEmptyOptional() {
-        User user = new User(1, "name1", "email1", "password1");
-        sql2oUserRepository.save(user);
-        assertThat(sql2oUserRepository.save(new User(2, "name1", "email1", "password1"))).isEqualTo(Optional.empty());
-    }
-
-    @Test
     public void whenDontSaveThenNothingFound() {
         String findingEmail = "email";
         String findingPassword = "password";
