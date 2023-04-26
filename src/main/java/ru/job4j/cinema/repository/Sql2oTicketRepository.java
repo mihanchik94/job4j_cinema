@@ -1,6 +1,8 @@
 package ru.job4j.cinema.repository;
 
 import net.jcip.annotations.ThreadSafe;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Query;
@@ -13,6 +15,7 @@ import java.util.Optional;
 @ThreadSafe
 @Repository
 public class Sql2oTicketRepository implements TicketRepository {
+    private static final Logger LOG = LoggerFactory.getLogger(Sql2oTicketRepository.class.getName());
     private final Sql2o sql2o;
 
     public Sql2oTicketRepository(Sql2o sql2o) {
@@ -33,8 +36,11 @@ public class Sql2oTicketRepository implements TicketRepository {
                     .addParameter("userId", ticket.getUserId());
             int generatedId = query.executeUpdate().getKey(Integer.class);
             ticket.setId(generatedId);
-            return Optional.ofNullable(ticket);
+            return Optional.of(ticket);
+        } catch (Exception e) {
+            LOG.error("Exception when save ticket", e);
         }
+        return Optional.empty();
     }
 
     @Override

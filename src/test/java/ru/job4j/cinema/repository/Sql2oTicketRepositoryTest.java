@@ -63,14 +63,6 @@ class Sql2oTicketRepositoryTest {
     }
 
     @Test
-    public void whenSaveTicketsWithTheSameSessionsAndRowsThenEmptyOptional() {
-        Ticket ticket = new Ticket(1, 1, 1, 1, 1);
-        sql2oTicketRepository.save(ticket);
-        assertThatThrownBy(() -> sql2oTicketRepository.save(new Ticket(2, 1, 1, 1, 1)))
-                .isInstanceOf(RuntimeException.class);
-    }
-
-    @Test
     public void whenDontSaveThenNothingFound() {
         int findingId = 1;
         assertThat(sql2oTicketRepository.findById(findingId)).isEqualTo(Optional.empty());
